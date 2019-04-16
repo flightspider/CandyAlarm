@@ -18,10 +18,10 @@ if you happen to have a unused computer or a [Raspberry Pi], you can use this on
 
 # Dependency
 
-   - [jq]
-   - [pnp]
-   - [mplayer]/[cvnc]
-   - [icalBuddy](for calendar support on Mac)
+   - [jq](https://stedolan.github.io/jq/) (Json process)
+   - [pnp] (Html process)
+   - [mplayer]/[cvnc] (audio player)
+   - [icalBuddy] (calendar support on Mac)
 
    - You also need a [Baidu](https://ai.baidu.com/tech/speech/tts) or [MS](https://azure.microsoft.com/en-us/services/cognitive-services/text-to-speech/) API key to use TTS support, (not hard to apply accturally, just google it).
 
@@ -74,6 +74,29 @@ $ ./run2.sh eve     # (make a evening report)
 
 It's pretty easy if you know a little about HTML, the `pup` makes the process very convenient.
 
+8. If you want calendar in your alarm, for Exchange calendar user on MAC you can use the [icalBuddy] to make a text output of your calender and sync it to the alarm host daily. some thing like this, output example can be found at `./cal`
+
+```
+
+today=`date +%Y%m%d`
+ 
+path=~/.cal
+
+for n in {0..10}
+do
+day=`date -v +${n}d +%Y%m%d`
+md=`date -v +${n}d +%m-%d`
+icalBuddy  eventsFrom:$md to:$md > $path/$day.cal.txt
+done
+
+
+scp -P 10022 $path/*.cal.txt user@IpOfAlarmhost:~/Alarm/.cal/
+
+echo Sync finished at `date` >> ~/.cal/sync_log.txt
+
+```
+
+On Linux/Windows platform it have not been further studied, but MS Graph API could be a solution as a better solution.
 
 # Develop
 
