@@ -1,0 +1,9 @@
+
+*.dat
+*.json
+*.log
+.bak
+
+*.m4a
+*.mp3
+
