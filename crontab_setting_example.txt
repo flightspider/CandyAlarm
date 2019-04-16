@@ -1,0 +1,16 @@
+#clock report
+0 8-23 * * * /home/usr/Alarm/run2.sh clk
+0 8-23 * * * xdg-open /home/usr/Alarm/Music/RiverFlowInYou_Cut30s.m4a
+
+#Morning
+
+
+30 7 * * * /home/xyang/usr/run2.sh mor
+30 7 * * * cvlc /home/usr/Alarm/Music/Morning/*
+
+22 7 * * * /home/usr/Alarm/run2.sh mor
+22 7 * * * cvlc /home/usr/Alarm/Music/Morning/*
+
+#Evening
+45 23 * * * /home/usr/Alarm/run2.sh eve
+45 23 * * * cvlc /usr/xyang/Alarm/Music/Evening/*
